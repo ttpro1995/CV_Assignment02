@@ -45,3 +45,6 @@ SUBMIT/
 report/report.synctex.gz
 report/report.log
 report/report.aux
+.idea/
+test/.cache/
+test/__pycache__/
