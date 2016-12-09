@@ -6,6 +6,7 @@ import cv2
 import sys
 import sys, os
 import numpy as np
+import upload
 
 # make sure it can find detector.py file
 sys.path.append(os.path.realpath(os.path.dirname(__file__)+"/.."))
@@ -20,9 +21,13 @@ class TestDetector():
         assert cat.shape == (566,604,3)
 
     def test_harris(self):
+        _name = 'test_harris'
+        _file  = './output/'+_name+'.png'
         cat = cv2.imread(image_path)
         assert cat.shape == (566,604,3)
         _detector = Detector()
         feature, result = _detector.harris(cat)
+        cv2.imwrite(_file, result)
+        upload.imgur(_file, _name)
         assert result.shape == (566, 604, 3)
         assert feature.shape == (566, 604)

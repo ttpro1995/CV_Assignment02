@@ -24,4 +24,5 @@ install:
 
 script:
   # Your test script goes here
-  - pytest ./test/test1.py
+  - pytest -v -s ./test/test1.py
+  - pytest -v -s ./test/test_detector.py
