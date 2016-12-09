@@ -44,16 +44,20 @@ def main():
     if (image_name2 != None):
         image2 = cv2.imread(image_name2)
 
-    a, b=  _detector.blob(image2)
+    if (isMatchMode == False):
+        if (detector_method == HARRIS):
+            print 'Run harris detector'
+            feature, result_image1 = _detector.harris(image1)
+        if (detector_method == BLOB):
+            print 'Run blob detector'
+            keypoints, result_image1 = _detector.blob(image1)
 
-    if (isMatchMode == False) and (detector_method == HARRIS):
-        print 'Run harris detector'
-        feature, result_image1 = _detector.harris(image1)
 
     if (result_image1 is not None):
         print('print sth')
         cv2.imwrite('./output/'+image_name1, result_image1)
-
+        cv2.imshow('image',result_image1)
+        cv2.waitKey()
 
 if __name__ =='__main__':
     main()

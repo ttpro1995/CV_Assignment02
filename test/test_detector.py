@@ -14,6 +14,7 @@ sys.path.append(os.path.realpath(os.path.dirname(__file__)+"/.."))
 from detector import Detector
 
 image_path = './test/cat.jpg'
+blob_path = './test/blobsample2.png'
 class TestDetector():
 
     def test_cv2(self):
@@ -35,10 +36,9 @@ class TestDetector():
     def test_blob(self):
         _name = 'test_blob'
         _file  = './output/'+_name+'.png'
-        cat = cv2.imread(image_path)
-        assert cat.shape == (566,604,3)
+        img = cv2.imread(blob_path)
         _detector = Detector()
-        feature, result = _detector.blob(cat)
+        feature, result = _detector.blob(img)
         cv2.imwrite(_file, result)
         upload.imgur(_file, _name)
-        assert result.shape == (566, 604, 3)
+        assert result.shape == img.shape # result should have same dimension with input
