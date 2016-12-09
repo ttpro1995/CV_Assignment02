@@ -44,6 +44,8 @@ def main():
     if (image_name2 != None):
         image2 = cv2.imread(image_name2)
 
+    a, b=  _detector.blob(image2)
+
     if (isMatchMode == False) and (detector_method == HARRIS):
         print 'Run harris detector'
         feature, result_image1 = _detector.harris(image1)

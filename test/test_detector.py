@@ -31,3 +31,14 @@ class TestDetector():
         upload.imgur(_file, _name)
         assert result.shape == (566, 604, 3)
         assert feature.shape == (566, 604)
+
+    def test_blob(self):
+        _name = 'test_blob'
+        _file  = './output/'+_name+'.png'
+        cat = cv2.imread(image_path)
+        assert cat.shape == (566,604,3)
+        _detector = Detector()
+        feature, result = _detector.blob(cat)
+        cv2.imwrite(_file, result)
+        upload.imgur(_file, _name)
+        assert result.shape == (566, 604, 3)
