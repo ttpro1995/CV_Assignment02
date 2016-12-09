@@ -4,7 +4,7 @@
 import pytest
 import cv2
 import numpy as np
-image_path = 'cat.jpg'
+image_path = './test/cat.jpg'
 class TestUtil():
 
     def test_cv2(self):
