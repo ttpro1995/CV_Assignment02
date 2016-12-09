@@ -48,3 +48,5 @@ report/report.aux
 .idea/
 test/.cache/
 test/__pycache__/
+*.pyc
+.cache/
