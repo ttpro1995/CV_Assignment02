@@ -42,3 +42,13 @@ class TestDetector():
         cv2.imwrite(_file, result)
         upload.imgur(_file, _name)
         assert result.shape == img.shape # result should have same dimension with input
+
+    def test_dog(self):
+        _name = 'test_dog'
+        _file  = './output/'+_name+'.png'
+        img = cv2.imread(image_path)
+        _detector = Detector()
+        feature, result = _detector.dog(img)
+        cv2.imwrite(_file, result)
+        upload.imgur(_file, _name)
+        assert result.shape == img.shape # result should have same dimension with input

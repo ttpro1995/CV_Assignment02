@@ -16,7 +16,7 @@ class Detector:
         dst = cv2.cornerHarris(gray_img, 2, 3, 0.04)
         result_img = img.copy() # deep copy image
         # result is dilated for marking the corners, not important
-        dst = cv2.dilate(dst, None)
+        # dst = cv2.dilate(dst, None)
 
         # Threshold for an optimal value, it may vary depending on the image.
         result_img[dst > 0.01 * dst.max()] = [0, 0, 255]
@@ -40,6 +40,14 @@ class Detector:
 
         return (keypoints, im_with_keypoints)
 
-    def dog(self):
-        pass
+    def dog(self, img):
+        gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        g1 = cv2.GaussianBlur(gray_img,(7,7),1)
+        g2 = cv2.GaussianBlur(gray_img,(7,7),5)
+        dif = cv2.absdiff(g1, g2)
+        ret, dif = cv2.threshold(dif, 24, 255, cv2.THRESH_BINARY)
+        # dif = cv2.dilate(dif, None)
+        result_img = img.copy()  # deep copy image
+        result_img[dif > 0.01 * dif.max()] = [0, 0, 255]
 
+        return dif, result_img

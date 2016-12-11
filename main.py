@@ -51,6 +51,9 @@ def main():
         if (detector_method == BLOB):
             print 'Run blob detector'
             keypoints, result_image1 = _detector.blob(image1)
+        if (detector_method == DOG):
+            print 'Run DOG detector'
+            feature, result_image1 = _detector.dog(image1)
 
 
     if (result_image1 is not None):
