@@ -4,15 +4,18 @@ import numpy as np
 import util
 from detector import Detector
 from descriptor import Descriptor
+from matcher import Matcher
 
 HARRIS = 'harris'
 BLOB = 'blob'
 DOG = 'dog'
+DEFAULT = 'default'
+SIFT = 'sift'
 
 def main():
 
     _detector = Detector()
-    descriptor = Descriptor()
+    _matcher = Matcher()
 
     if (len(sys.argv) < 2):
         util.help()
@@ -54,6 +57,10 @@ def main():
         if (detector_method == DOG):
             print 'Run DOG detector'
             feature, result_image1 = _detector.dog(image1)
+
+    if (isMatchMode == True):
+        if (detector_method == DEFAULT) and (descriptor_method==SIFT):
+            matches, result_image1 = _matcher.default_match(image1, image2, 30)
 
 
     if (result_image1 is not None):

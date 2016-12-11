@@ -13,8 +13,8 @@ sys.path.append(os.path.realpath(os.path.dirname(__file__)+"/.."))
 
 from detector import Detector
 
-image_path = './test/cat.jpg'
-blob_path = './test/blobsample2.png'
+image_path = './image/cat.jpg'
+blob_path = './image/blobsample2.png'
 class TestDetector():
 
     def test_cv2(self):

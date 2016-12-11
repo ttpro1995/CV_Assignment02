@@ -27,3 +27,4 @@ script:
   # Your test script goes here
   - pytest -v -s ./test/test1.py
   - pytest -v -s ./test/test_detector.py
+  - pytest -v -s ./test/test_matches.py
