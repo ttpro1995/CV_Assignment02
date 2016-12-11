@@ -1,3 +1,6 @@
+# Thai Thien
+# 1351040
+
 import cv2
 import sys
 import numpy as np
@@ -44,8 +47,11 @@ def main():
     print (detector_method)
 
     image1 = cv2.imread(image_name1)
+    image1 = util.add_noise(image1,0.1)
+
     if (image_name2 != None):
         image2 = cv2.imread(image_name2)
+        image2 = util.add_noise(image2,0.1)
 
     if (isMatchMode == False):
         if (detector_method == HARRIS):

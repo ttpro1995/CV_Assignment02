@@ -1,4 +1,8 @@
+# Thai Thien
+# 1351040
+
 import cv2
+import random
 import numpy as np
 def help():
     helpMessage = '''
@@ -22,6 +26,21 @@ def incorrect_argv():
         m <detector> <descriptor> <filename1> <filename2>
     '''
     print (incorrect_argv_message)
+
+def add_noise(img, noise):
+    '''
+    Add some salt and peper
+    :param img:
+    :param noise:
+    :return:
+    '''
+    r = random.SystemRandom()
+    noise += r.uniform(float(noise)/10, float(noise)/1)
+    result_image = img.copy()
+    noise_mask = np.zeros(result_image.shape,result_image.dtype)
+    cv2.randu(noise_mask, np.zeros(3), np.ones(3) * 255 * noise)
+    result_image = cv2.add(result_image,noise_mask)
+    return result_image
 
 def drawMatches(img1, kp1, img2, kp2, matches):
     """

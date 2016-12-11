@@ -10,6 +10,7 @@ import upload
 
 # make sure it can find matcher.py file
 sys.path.append(os.path.realpath(os.path.dirname(__file__)+"/.."))
+import util
 from matcher import Matcher
 
 # make sure it can find detector.py file
@@ -27,8 +28,10 @@ class TestMatcher():
         _name = 'test_match_default_sift'
         _file  = './output/'+_name+'.png'
         img1 = cv2.imread(image_1_path)
+        img1 = util.add_noise(img1, 0.2)
         img2 = cv2.imread(image_2_path)
+        img2 = util.add_noise(img2, 0.2)
         _matcher = Matcher()
         matches, result = _matcher.default_match(img1, img2, 20)
         cv2.imwrite(_file, result)
-        upload.imgur(_file, _name)
+        # upload.imgur(_file, _name)

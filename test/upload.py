@@ -1,3 +1,6 @@
+# Thai Thien
+# 1351040
+
 # b18f28cc83c7acf
 import pyimgur
 import time
