@@ -16,6 +16,7 @@ from detector import Detector
 
 image_path = './image/cat.jpg'
 blob_path = './image/blobsample2.png'
+isUpload = True
 class TestDetector():
 
     def test_cv2(self):
@@ -31,7 +32,8 @@ class TestDetector():
         _detector = Detector()
         feature, result = _detector.harris(cat)
         cv2.imwrite(_file, result)
-        upload.imgur(_file, _name)
+        if (isUpload):
+            upload.imgur(_file, _name)
         assert result.shape == (566, 604, 3)
         assert feature.shape == (566, 604)
 
@@ -43,7 +45,8 @@ class TestDetector():
         _detector = Detector()
         feature, result = _detector.blob(img)
         cv2.imwrite(_file, result)
-        upload.imgur(_file, _name)
+        if (isUpload):
+            upload.imgur(_file, _name)
         assert result.shape == img.shape # result should have same dimension with input
 
     def test_dog(self):
@@ -54,5 +57,6 @@ class TestDetector():
         _detector = Detector()
         feature, result = _detector.dog(img)
         cv2.imwrite(_file, result)
-        upload.imgur(_file, _name)
+        if (isUpload):
+            upload.imgur(_file, _name)
         assert result.shape == img.shape # result should have same dimension with input

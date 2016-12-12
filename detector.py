@@ -23,7 +23,12 @@ class Detector:
 
         # Threshold for an optimal value, it may vary depending on the image.
         result_img[dst > 0.01 * dst.max()] = [0, 0, 255]
-        return (dst, result_img)
+
+        # for each dst larger than threshold, make a keypoint out of it
+        keypoints = np.argwhere(dst > 0.01 * dst.max())
+        keypoints = [cv2.KeyPoint(x[1], x[0], 1) for x in keypoints]
+
+        return (keypoints, result_img)
 
     def blob(self, img):
         '''
@@ -33,7 +38,30 @@ class Detector:
         '''
 
         gray_img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-        blob_detector = cv2.SimpleBlobDetector()
+
+        # Setup SimpleBlobDetector parameters.
+        params = cv2.SimpleBlobDetector_Params()
+
+        # Change thresholds
+        params.minThreshold = 10;
+        params.maxThreshold = 200;
+
+        # Filter by Area.
+        params.filterByArea = True
+        params.minArea = 1500
+
+        # Filter by Circularity
+        params.filterByCircularity = True
+        params.minCircularity = 0.1
+
+        # Filter by Convexity
+        params.filterByConvexity = True
+        params.minConvexity = 0.87
+
+        # Filter by Inertia
+        params.filterByInertia = True
+        params.minInertiaRatio = 0.01
+        blob_detector = cv2.SimpleBlobDetector(params)
         print('gray_img type ', gray_img.dtype)
         keypoints = blob_detector.detect(gray_img)
         # Draw detected blobs as red circles.
