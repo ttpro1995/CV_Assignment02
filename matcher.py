@@ -26,7 +26,8 @@ class Matcher:
         :param num_drawmatch: number of line in result_image
         :return: (matches, result_image)
         '''
-
+        img1 = cv2.fastNlMeansDenoisingColored(img1, None, 10, 10, 7, 21)
+        img2 = cv2.fastNlMeansDenoisingColored(img2, None, 10, 10, 7, 21)
         kp1, des1 = self._orb.detectAndCompute(img1, None)
         kp2, des2 = self._orb.detectAndCompute(img2, None)
         bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
@@ -40,6 +41,8 @@ class Matcher:
         return (matches, result_image)
 
     def dog_match(self, img1, img2, num_drawmatch, type = 'sift'):
+        img1 = cv2.fastNlMeansDenoisingColored(img1, None, 10, 10, 7, 21)
+        img2 = cv2.fastNlMeansDenoisingColored(img2, None, 10, 10, 7, 21)
         kp1 = self._sift.detect(img1)
         kp2 = self._sift.detect(img2)
         if (type == self.SIFT):
@@ -61,6 +64,8 @@ class Matcher:
         return (matches, result_image)
 
     def harris_match(self, img1, img2, num_drawmatch, type = 'sift'):
+        img1 = cv2.fastNlMeansDenoisingColored(img1, None, 10, 10, 7, 21)
+        img2 = cv2.fastNlMeansDenoisingColored(img2, None, 10, 10, 7, 21)
         # find the keypoints and descriptors with SIFT
         kp1, _ = self._detector.harris(img1)
         kp2, _ = self._detector.harris(img2)
