@@ -30,12 +30,13 @@ class TestDetector():
         cat = util.add_noise(cat, 0.1)
         assert cat.shape == (566,604,3)
         _detector = Detector()
-        feature, result = _detector.harris(cat)
+        keypoints, result = _detector.harris(cat)
         cv2.imwrite(_file, result)
+        print ('Number of keypoint ',len(keypoints))
         if (isUpload):
             upload.imgur(_file, _name)
         assert result.shape == (566, 604, 3)
-        assert feature.shape == (566, 604)
+
 
     def test_blob(self):
         _name = 'test_blob'
