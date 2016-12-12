@@ -42,7 +42,7 @@ def add_noise(img, noise):
     result_image = cv2.add(result_image,noise_mask)
     return result_image
 
-def drawMatches(img1, kp1, img2, kp2, matches):
+def drawMatches(img1, kp1, img2, kp2, matches, isKnn = False):
     """
     This function takes in two images with their associated
     keypoints, as well as a list of DMatch data structure (matches)
@@ -79,27 +79,52 @@ def drawMatches(img1, kp1, img2, kp2, matches):
 
     # For each pair of points we have between both images
     # draw circles, then connect a line between them
-    for mat in matches:
+    if (isKnn == False):
+        for mat in matches:
 
-        # Get the matching keypoints for each of the images
-        img1_idx = mat.queryIdx
-        img2_idx = mat.trainIdx
+            # Get the matching keypoints for each of the images
+            img1_idx = mat.queryIdx
+            img2_idx = mat.trainIdx
 
-        # x - columns
-        # y - rows
-        (x1,y1) = kp1[img1_idx].pt
-        (x2,y2) = kp2[img2_idx].pt
-        x2+= space
-        # Draw a small circle at both co-ordinates
-        # radius 4
-        # colour blue
-        # thickness = 1
-        cv2.circle(out, (int(x1),int(y1)), 4, (255, 0, 0), 1)
-        cv2.circle(out, (int(x2)+cols1,int(y2)), 4, (255, 0, 0), 1)
+            # x - columns
+            # y - rows
+            (x1,y1) = kp1[img1_idx].pt
+            (x2,y2) = kp2[img2_idx].pt
+            x2+= space
+            # Draw a small circle at both co-ordinates
+            # radius 4
+            # colour blue
+            # thickness = 1
+            cv2.circle(out, (int(x1),int(y1)), 4, (255, 0, 0), 1)
+            cv2.circle(out, (int(x2)+cols1,int(y2)), 4, (255, 0, 0), 1)
 
-        # Draw a line in between the two points
-        # thickness = 1
-        # colour blue
-        cv2.line(out, (int(x1),int(y1)), (int(x2)+cols1,int(y2)), (255, 0, 0), 1)
+            # Draw a line in between the two points
+            # thickness = 1
+            # colour blue
+            cv2.line(out, (int(x1),int(y1)), (int(x2)+cols1,int(y2)), (255, 0, 0), 1)
+    else:
+        for submat in matches:
+            for mat in submat:
+                # Get the matching keypoints for each of the images
+                img1_idx = mat.queryIdx
+                img2_idx = mat.trainIdx
+
+                # x - columns
+                # y - rows
+                (x1, y1) = kp1[img1_idx].pt
+                (x2, y2) = kp2[img2_idx].pt
+                x2 += space
+                # Draw a small circle at both co-ordinates
+                # radius 4
+                # colour blue
+                # thickness = 1
+                cv2.circle(out, (int(x1), int(y1)), 4, (255, 0, 0), 1)
+                cv2.circle(out, (int(x2) + cols1, int(y2)), 4, (255, 0, 0), 1)
+
+                # Draw a line in between the two points
+                # thickness = 1
+                # colour blue
+                cv2.line(out, (int(x1), int(y1)), (int(x2) + cols1, int(y2)), (255, 0, 0), 1)
+
     return out
 

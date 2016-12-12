@@ -42,11 +42,11 @@ class Matcher:
         kp2, des2 = self._sift.compute(img2, kp2)
         bf = cv2.BFMatcher()
 
-        matches = bf.match(des1, des2)
+        matches = bf.knnMatch(des1, des2, k = 2)
 
         # Sort them in the order of their distance.
-        matches = sorted(matches, key=lambda x: x.distance)
-        result_image = util.drawMatches(img1, kp1, img2, kp2, matches[:num_drawmatch])
+        # matches = sorted(matches, key=lambda x: x.distance)
+        result_image = util.drawMatches(img1, kp1, img2, kp2, matches[:num_drawmatch], isKnn=True)
         return (matches, result_image)
 
 
