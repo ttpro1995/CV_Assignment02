@@ -12,7 +12,7 @@ from matcher import Matcher
 HARRIS = 'harris'
 BLOB = 'blob'
 DOG = 'dog'
-DEFAULT = 'default'
+ORB = 'orb'
 SIFT = 'sift'
 
 def main():
@@ -65,8 +65,13 @@ def main():
             feature, result_image1 = _detector.dog(image1)
 
     if (isMatchMode == True):
-        if (detector_method == DEFAULT) and (descriptor_method==SIFT):
-            matches, result_image1 = _matcher.default_match(image1, image2, 30)
+        if (descriptor_method == SIFT):
+            if (detector_method == HARRIS):
+                matches, result_image1 = _matcher.harris_match(image1, image2, 30)
+            if (detector_method == ORB):
+                matches, result_image1 = _matcher.orb_match(image1, image2, 30)
+            if (detector_method == DOG):
+                matches, result_image1 = _matcher.dog_match(image1, image2, 30)
 
 
     if (result_image1 is not None):

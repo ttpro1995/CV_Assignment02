@@ -14,7 +14,7 @@ class Matcher:
 
         self._detector = Detector()
 
-    def default_match(self, img1, img2, num_drawmatch):
+    def orb_match(self, img1, img2, num_drawmatch):
         '''
         Match 2 image use orb detector and sift
         :param img1: first image
@@ -35,7 +35,7 @@ class Matcher:
         result_image = util.drawMatches(img1, kp1, img2, kp2, matches[:num_drawmatch])
         return (matches, result_image)
 
-    def sift_match(self, img1, img2, num_drawmatch):
+    def dog_match(self, img1, img2, num_drawmatch):
         kp1 = self._sift.detect(img1)
         kp2 = self._sift.detect(img2)
         kp1, des1 = self._sift.compute(img1, kp1)
@@ -59,7 +59,7 @@ class Matcher:
         kp2, des2 = self._sift.compute(img2, kp2)
         bf = cv2.BFMatcher()
 
-        matches = bf.match(des1, des2)
+        matches = bf.knnMatch(des1, des2, k=2)
 
         # Sort them in the order of their distance.
         # matches = sorted(matches, key=lambda x: x.distance)
@@ -68,5 +68,5 @@ class Matcher:
             mini_match = matches
         else:
             mini_match =  matches[:num_drawmatch]
-        result_image = util.drawMatches(img1, kp1, img2, kp2,mini_match)
+        result_image = util.drawMatches(img1, kp1, img2, kp2,mini_match, isKnn=True)
         return (matches, result_image)
