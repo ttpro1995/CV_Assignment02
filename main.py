@@ -72,6 +72,8 @@ def main():
                 matches, result_image1 = _matcher.orb_match(image1, image2, 30)
             if (detector_method == DOG):
                 matches, result_image1 = _matcher.dog_match(image1, image2, 30)
+            if (detector_method == BLOB):
+                matches, result_image1 = _matcher.blob_match(image1, image2, 30)
 
 
     if (result_image1 is not None):

@@ -76,7 +76,7 @@ class TestMatcher():
         if (isUpload):
             upload.imgur(_file,_name)
 
-    def test_matches_dog_sift(self):
+    def test_matches_dog_lbp(self):
         _name = 'test_match_dog_lbp'
         _file  = './output/'+_name+'.png'
         img1 = cv2.imread(image_1_path)
@@ -84,9 +84,36 @@ class TestMatcher():
         img2 = cv2.imread(image_2_path)
         img2 = util.add_noise(img2, 0.2)
         _matcher = Matcher()
-        matches, result = _matcher.dog_match(img1, img2, 20, type='lbp')
+        matches, result = _matcher.dog_match(img1, img2, 30, type='lbp')
         cv2.imwrite(_file, result)
         if (isUpload):
             upload.imgur(_file,_name)
+
+    def test_matches_blob_lbp(self):
+        _name = 'test_match_blob_lbp'
+        _file  = './output/'+_name+'.png'
+        img1 = cv2.imread(image_1_path)
+        img1 = util.add_noise(img1, 0.2)
+        img2 = cv2.imread(image_2_path)
+        img2 = util.add_noise(img2, 0.2)
+        _matcher = Matcher()
+        matches, result = _matcher.blob_match(img1, img2, 30, type='lbp')
+        cv2.imwrite(_file, result)
+        if (isUpload):
+            upload.imgur(_file,_name)
+
+    def test_matches_blob_sift(self):
+        _name = 'test_match_blob_sift'
+        _file  = './output/'+_name+'.png'
+        img1 = cv2.imread(image_1_path)
+        img1 = util.add_noise(img1, 0.2)
+        img2 = cv2.imread(image_2_path)
+        img2 = util.add_noise(img2, 0.2)
+        _matcher = Matcher()
+        matches, result = _matcher.blob_match(img1, img2, 30, type='sift')
+        cv2.imwrite(_file, result)
+        if (isUpload):
+            upload.imgur(_file,_name)
+
 
 

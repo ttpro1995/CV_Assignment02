@@ -91,3 +91,32 @@ class Matcher:
             mini_match =  matches[:num_drawmatch]
         result_image = util.drawMatches(img1, kp1, img2, kp2,mini_match, isKnn=True)
         return (matches, result_image)
+
+    def blob_match(self, img1, img2, num_drawmatch, type = 'sift'):
+        img1 = cv2.fastNlMeansDenoisingColored(img1, None, 10, 10, 7, 21)
+        img2 = cv2.fastNlMeansDenoisingColored(img2, None, 10, 10, 7, 21)
+        # find the keypoints and descriptors with SIFT
+        kp1, _ = self._detector.blob(img1)
+        kp2, _ = self._detector.blob(img2)
+
+        if (type == self.SIFT):
+            print ('using SIFT descriptor')
+            kp1, des1 = self._sift.compute(img1, kp1)
+            kp2, des2 = self._sift.compute(img2, kp2)
+        elif(type==self.LBP):
+            print ('using LBP descriptor')
+            kp1, des1 = self._lbp.compute(img1, kp1)
+            kp2, des2 = self._lbp.compute(img2, kp2)
+
+        bf = cv2.BFMatcher()
+        matches = bf.knnMatch(des1, des2, k=2)
+
+        # Sort them in the order of their distance.
+        # matches = sorted(matches, key=lambda x: x.distance)
+        random.shuffle(matches)
+        if (num_drawmatch < 0):
+            mini_match = matches
+        else:
+            mini_match =  matches[:num_drawmatch]
+        result_image = util.drawMatches(img1, kp1, img2, kp2,mini_match, isKnn=True)
+        return (matches, result_image)
