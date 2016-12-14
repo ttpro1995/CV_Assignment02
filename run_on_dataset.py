@@ -9,7 +9,7 @@ ORB = 'orb'
 SIFT = 'sift'
 LBP = 'lbp'
 
-outpur_prefix = 'output/'
+output_prefix = 'output/'
 
 def run_match(detector_method, descriptor_method, image1, image2, filename, isUpload = True):
     _matcher = Matcher()
@@ -32,19 +32,25 @@ def run_match(detector_method, descriptor_method, image1, image2, filename, isUp
         if (detector_method == BLOB):
             matches, result_image1 = _matcher.blob_match(image1, image2, 30, type=LBP)
 
-    filename = detector_method+'_'+descriptor_method+'_'+filename
+    title = detector_method+'_'+descriptor_method+'_'+filename
+    filename = output_prefix + title
     cv2.imwrite(filename, result_image1)
     print ('saved %s' %(filename))
     if (isUpload):
-        upload.imgur(filename, filename)
+        upload.imgur(filename, title)
     return matches, result_image1
 
 def run():
     print('RUNNING on meow data set')
     prefix = './image/meowdata/'
 
-    voi1_path = './image/voi.png'
-    voi2_path = './image/voi_large.JPG'
+    voi1_path = prefix+ 'voi.png'
+    voi2_path = prefix+ 'voi_large.JPG'
+
+    voi1 = cv2.imread(voi1_path)
+    voi2 = cv2.imread(voi2_path)
+
+    run_match(HARRIS, SIFT, voi1, voi2, 'voi1_2.png')
 
     chuot1_path = prefix + 'chuot1.jpg'
     chuot2_path = prefix + 'chuot1.jpg'
