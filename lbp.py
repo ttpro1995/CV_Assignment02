@@ -4,8 +4,6 @@ import numpy as np
 import cv2
 
 class LBP:
-    def __init__(self):
-        print ('LBP descriptor')
     def compute(self, img, keypoints):
         img = np.asarray(img)
         img = (1 << 7) * (img[0:-2, 0:-2] >= img[1:-1, 1:-1]) \

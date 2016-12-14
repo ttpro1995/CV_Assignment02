@@ -28,3 +28,4 @@ script:
   - pytest -v -s ./test/test_util.py
   - pytest -v -s ./test/test_detector.py
   - pytest -v -s ./test/test_matches.py
+  - python run_on_dataset.py

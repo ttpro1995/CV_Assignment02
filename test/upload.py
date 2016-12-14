@@ -10,5 +10,5 @@ def imgur(path, title):
     uploaded_image = im.upload_image(path, title=title+' '+str(time.time()))
     print('\nImgur Title: ',uploaded_image.title)
     print('\nImgur Link: ', uploaded_image.link)
-    print('\nImgur Size: ', uploaded_image.size)
-    print('\nImgur Type: ', uploaded_image.type)
+    print('\n')
+

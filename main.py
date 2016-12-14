@@ -14,6 +14,7 @@ BLOB = 'blob'
 DOG = 'dog'
 ORB = 'orb'
 SIFT = 'sift'
+LBP = 'lbp'
 
 def main():
 
@@ -74,6 +75,15 @@ def main():
                 matches, result_image1 = _matcher.dog_match(image1, image2, 30)
             if (detector_method == BLOB):
                 matches, result_image1 = _matcher.blob_match(image1, image2, 30)
+        if (descriptor_method == LBP):
+            if (detector_method == HARRIS):
+                matches, result_image1 = _matcher.harris_match(image1, image2, 30, type=LBP)
+            if (detector_method == ORB):
+                matches, result_image1 = _matcher.orb_match(image1, image2, 30, type=LBP)
+            if (detector_method == DOG):
+                matches, result_image1 = _matcher.dog_match(image1, image2, 30, type=LBP)
+            if (detector_method == BLOB):
+                matches, result_image1 = _matcher.blob_match(image1, image2, 30, type=LBP)
 
 
     if (result_image1 is not None):
