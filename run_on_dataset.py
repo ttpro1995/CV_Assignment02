@@ -68,19 +68,28 @@ def run():
 
     nuoc1_path = prefix + 'nuoc1.jpg'
     nuoc2_path = prefix + 'nuoc2.jpg'
+    nuoc3_path = prefix + 'nuoc3.jpg'
+    nuoc4_path = prefix + 'nuoc4.jpg'
+    nuoc5_path = prefix + 'nuoc5.jpg'
 
     pen1_path = prefix + 'pen1.jpg'
     pen2_path = prefix + 'pen2.jpg'
+    pen3_path = prefix + 'pen3.jpg'
+    pen4_path = prefix + 'pen4.jpg'
 
 
     nuoc1 = cv2.imread(nuoc1_path)
     nuoc2 = cv2.imread(nuoc2_path)
+    nuoc3 = cv2.imread(nuoc3_path)
 
     pen1 = cv2.imread(pen1_path)
     pen2 = cv2.imread(pen2_path)
+    pen3 = cv2.imread(pen3_path)
+    pen4 = cv2.imread(pen4_path)
 
     chuot1 = cv2.imread(chuot1_path)
     chuot2 = cv2.imread(chuot2_path)
+    chuot3 = cv2.imread(chuot3_path)
 
 
     dau1 = cv2.imread(dau1_path)
@@ -93,9 +102,11 @@ def run():
     run_match(HARRIS, SIFT, keyboard1, keyboard2, 'keyboard1_2.png')
     run_match(HARRIS, SIFT, dau1, dau2, 'dau1_2.png')
     run_match(HARRIS, SIFT, chuot1, chuot2, 'chuot1_2.png')
-
+    run_match(HARRIS, SIFT, chuot2, chuot3, 'chuot2_3.png')
     run_match(HARRIS, SIFT, nuoc1, nuoc2, 'nuoc1_2.png')
     run_match(HARRIS, SIFT, pen1, pen2, 'pen1_2.png')
+
+
     run_match(BLOB, SIFT, keyboard1, keyboard2, 'keyboard1_2.png')
     run_match(BLOB, SIFT, dau1, dau2, 'dau1_2.png')
     run_match(BLOB, SIFT, chuot1, chuot2, 'chuot1_2.png')
@@ -125,6 +136,24 @@ def run():
     run_match(DOG, LBP, chuot1, chuot2, 'chuot1_2.png')
     run_match(DOG, LBP, pen1, pen2, 'pen1_2.png')
     run_match(DOG, LBP, nuoc1, nuoc2, 'nuoc1_2.png')
+
+    run_match(HARRIS, SIFT, pen3, pen4, 'pen3_4.png')
+    run_match(HARRIS, SIFT, nuoc2, nuoc3, 'nuoc2_3.png')
+
+    run_match(BLOB, SIFT, pen3, pen4, 'pen3_4.png')
+    run_match(BLOB, SIFT, nuoc2, nuoc3, 'nuoc2_3.png')
+
+    run_match(DOG, SIFT, pen3, pen4, 'pen3_4.png')
+    run_match(DOG, SIFT, nuoc2, nuoc3, 'nuoc2_3.png')
+
+    run_match(HARRIS, LBP, pen3, pen4, 'pen3_4.png')
+    run_match(HARRIS, LBP, nuoc2, nuoc3, 'nuoc2_3.png')
+
+    run_match(BLOB, LBP, pen3, pen4, 'pen3_4.png')
+    run_match(BLOB, LBP, nuoc2, nuoc3, 'nuoc2_3.png')
+
+    run_match(DOG, LBP, pen3, pen4, 'pen3_4.png')
+    run_match(DOG, LBP, nuoc2, nuoc3, 'nuoc2_3.png')
 
     print('DONE')
 
