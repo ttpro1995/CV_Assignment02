@@ -1,0 +1,225 @@
+\documentclass[a4paper, 12pt]{article}
+
+ \usepackage{indentfirst} % indent the first paragraph in section
+% Title Page
+\title{OpenCV Homework 02 Report}
+\author{Thai Thien 1351040}
+
+ \usepackage{url} % allow url in bibtex
+ \usepackage{float} % force picture to place [H] HERE
+ \usepackage{graphicx} %load package for graphic
+ 
+\begin{document}
+\maketitle
+
+\section{Command}
+python main.py detector file\_name \\
+Show the keypoints on image using specific detector. Detector are harris, dog, blob.
+
+python main.py m detector descriptor file1 file2 \\
+Draw match point on two image side-by-side using specific detector and descriptor.  Detector are harris, dog, blob, descriptor are sift, lbp
+
+python run\_on\_dataset.py \\
+Matching using image in ./image/my\_object\_resized 
+
+\section{Dataset}
+Photo of 5 objects (computer mouse, pen, water bottle, keyboard, bottle of oil) are taken by mobile phone and resized to 800x600 pixels. Then, a pair of photo of each object are match using all 3 detector and 2 descriptor.
+
+\section{Experiment result}
+
+\subsection{Harris SIFT}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/harris_sift_chuot1_2.png}
+	\caption[]{Computer mouse - Harris with SIFT }
+	\label{fig:harris_sift_chuot2_3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/harris_sift_nuoc2_3.png}
+	\caption[]{Water bottle - Harris with SIFT }
+	\label{fig:harris_sift_nuoc2_3.png}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/harris_sift_pen3_4.png}
+	\caption[]{Pen - Harris with SIFT }
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/harris_sift_dau1_2.png}
+	\caption[]{bottle of oil - Harris with SIFT }
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/harris_sift_keyboard1_2.png}
+	\caption[]{Keyboard - Harris with SIFT }
+\end{figure}
+
+\subsection{Blob SIFT}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/blob_sift_chuot1_2.png}
+	\caption[]{Computer mouse - Blob with SIFT }
+	\label{fig:harris_sift_chuot2_3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/blob_sift_nuoc2_3.png}
+	\caption[]{Water bottle - Blob with SIFT }
+	\label{fig:harris_sift_nuoc2_3.png}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/blob_sift_pen3_4.png}
+	\caption[]{Pen - Blob with SIFT }
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/blob_sift_dau1_2.png}
+	\caption[]{bottle of oil - Blob with SIFT }
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/blob_sift_keyboard1_2.png}
+	\caption[]{Keyboard - Blob with SIFT }
+\end{figure}
+
+\subsection{DOG SIFT}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/dog_sift_chuot1_2.png}
+	\caption[]{Computer mouse - Blob with SIFT }
+	\label{fig:harris_sift_chuot2_3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/dog_sift_nuoc2_3.png}
+	\caption[]{Water bottle - Blob with SIFT }
+	\label{fig:harris_sift_nuoc2_3.png}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/dog_sift_pen3_4.png}
+	\caption[]{Pen - Blob with SIFT }
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/dog_sift_dau1_2.png}
+	\caption[]{bottle of oil - Blob with SIFT }
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/dog_sift_keyboard1_2.png}
+	\caption[]{Keyboard - Blob with SIFT }
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Harris LBP}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/harris_lbp_chuot1_2.png}
+	\caption[]{Computer mouse - Harris with LBP }
+	\label{fig:harris_sift_chuot2_3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/harris_lbp_nuoc2_3.png}
+	\caption[]{Water bottle - Harris with LBP }
+	\label{fig:harris_sift_nuoc2_3.png}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/harris_lbp_pen3_4.png}
+	\caption[]{Pen - Harris with LBP }
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/harris_lbp_dau1_2.png}
+	\caption[]{bottle of oil - Harris with LBP }
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/harris_lbp_keyboard1_2.png}
+	\caption[]{Keyboard - Harris with LBP }
+\end{figure}
+
+\subsection{Blob LBP}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/blob_lbp_chuot1_2.png}
+	\caption[]{Computer mouse - Blob with LBP }
+	\label{fig:harris_sift_chuot2_3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/blob_lbp_nuoc2_3.png}
+	\caption[]{Water bottle - Blob with LBP }
+	\label{fig:harris_sift_nuoc2_3.png}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/blob_lbp_pen3_4.png}
+	\caption[]{Pen - Blob with LBP }
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/blob_lbp_dau1_2.png}
+	\caption[]{bottle of oil - Blob with LBP }
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/blob_lbp_keyboard1_2.png}
+	\caption[]{Keyboard - Blob with LBP }
+\end{figure}
+
+\subsection{DOG LBP}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/dog_lbp_chuot1_2.png}
+	\caption[]{Computer mouse - Blob with LBP }
+	\label{fig:harris_sift_chuot2_3.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/dog_lbp_nuoc2_3.png}
+	\caption[]{Water bottle - Blob with LBP }
+	\label{fig:harris_sift_nuoc2_3.png}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/dog_lbp_pen3_4.png}
+	\caption[]{Pen - Blob with LBP }
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/dog_lbp_dau1_2.png}
+	\caption[]{bottle of oil - Blob with LBP }
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{./output/dog_lbp_keyboard1_2.png}
+	\caption[]{Keyboard - Blob with LBP }
+\end{figure}
+
+
+
+\end{document}          

@@ -42,7 +42,7 @@ def run_match(detector_method, descriptor_method, image1, image2, filename, isUp
 
 def run():
     print('RUNNING on meow data set')
-    prefix = './image/meowdataresized/'
+    prefix = './image/my_object_resized/'
 
     voi1_path = prefix+ 'voi.png'
     voi2_path = prefix+ 'voi_large.JPG'

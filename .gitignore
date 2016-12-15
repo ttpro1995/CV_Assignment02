@@ -50,3 +50,6 @@ test/__pycache__/
 *.pyc
 .cache/
 output/
+*.gz
+*.aux
+Doc/template_Report.log
