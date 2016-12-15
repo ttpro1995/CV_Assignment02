@@ -42,7 +42,7 @@ def run_match(detector_method, descriptor_method, image1, image2, filename, isUp
 
 def run():
     print('RUNNING on meow data set')
-    prefix = './image/meowdata/'
+    prefix = './image/meowdataresized/'
 
     voi1_path = prefix+ 'voi.png'
     voi2_path = prefix+ 'voi_large.JPG'
@@ -50,7 +50,7 @@ def run():
     voi1 = cv2.imread(voi1_path)
     voi2 = cv2.imread(voi2_path)
 
-    run_match(HARRIS, SIFT, voi1, voi2, 'voi1_2.png')
+    # run_match(HARRIS, SIFT, voi1, voi2, 'voi1_2.png')
 
     chuot1_path = prefix + 'chuot1.jpg'
     chuot2_path = prefix + 'chuot1.jpg'
@@ -72,6 +72,7 @@ def run():
     pen1_path = prefix + 'pen1.jpg'
     pen2_path = prefix + 'pen2.jpg'
 
+
     nuoc1 = cv2.imread(nuoc1_path)
     nuoc2 = cv2.imread(nuoc2_path)
 
@@ -89,13 +90,12 @@ def run():
     keyboard2 = cv2.imread(keyboard2_path)
 
 
-
     run_match(HARRIS, SIFT, keyboard1, keyboard2, 'keyboard1_2.png')
     run_match(HARRIS, SIFT, dau1, dau2, 'dau1_2.png')
     run_match(HARRIS, SIFT, chuot1, chuot2, 'chuot1_2.png')
-    run_match(HARRIS, SIFT, pen1, pen2, 'pen1_2.png')
-    run_match(HARRIS, SIFT, nuoc1, nuoc2, 'nuoc1_2.png')
 
+    run_match(HARRIS, SIFT, nuoc1, nuoc2, 'nuoc1_2.png')
+    run_match(HARRIS, SIFT, pen1, pen2, 'pen1_2.png')
     run_match(BLOB, SIFT, keyboard1, keyboard2, 'keyboard1_2.png')
     run_match(BLOB, SIFT, dau1, dau2, 'dau1_2.png')
     run_match(BLOB, SIFT, chuot1, chuot2, 'chuot1_2.png')
